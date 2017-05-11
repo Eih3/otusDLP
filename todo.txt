@@ -1,0 +1,9 @@
+todo:
+ajouter noir entre slices -> ok
+slider ratio
+calibration plateau
+calibration résine
+version démo html
+moteur + servo
+only 1 post calibration
+mettre en place stream camera

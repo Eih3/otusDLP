@@ -1,0 +1,152 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+                <article class="content buttons-page">
+                    <div class="title-block">
+                        <a id="btn-upload" class="btn btn-primary btn-sm rounded btn-upload" style="float:right; width: 160px;">Upload un fichier .zip&nbsp;</a>
+                        <h3 class="title"> Impression 3D </h3>
+                        <p class="title-description"> Visualiser et démarrer une impression 3D </p>
+                    </div>
+
+                    <section class="section">
+                        <div class="row">
+                            <div id="managment-block" class="col-md-4">
+                                <div id="upload-block" class="card hidden">
+                                    <div class="card-block">
+                                        <div class="card-title-block" style="border-bottom: 1px solid #d7dde4; padding-bottom: 15px;">
+                                            <h3 class="title"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;&nbsp;Upload d'un fichier .zip </h3>
+                                        </div>
+                                        <div class="hide-show-upload">
+                                            <a id="hide-upload" class="btn btn-primary btn-sm rounded hide-upload"> <i class="fa fa-angle-up"></i> </a>
+                                            <a id="show-upload" class="btn btn-primary btn-sm rounded show-upload hidden"> <i class="fa fa-angle-down"></i> </a>
+                                            <a id="close-upload" class="btn btn-primary btn-sm rounded close-upload"> <i  class="fa fa-times" aria-hidden="true"></i> </a>
+                                        </div>
+
+                                        <section class="section" id="upload">
+                                            <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                                                    <div id="dropbox">
+                                                        Glissez votre fichier dans ce cadre ou  <label for="fileElem" style="cursor:pointer;">cliquez içi</label>
+                                                        <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+                                                    </div>
+                                                    <input type="submit" value="Envoyer" id="upload-button" type="button" class="btn btn-info btn-sm btn-upload">
+
+                                                <fieldset id="progress" style="display: none">
+                                                    <legend>Files Progress</legend>
+
+                                                    <div class="progress-trough">
+                                                        <div id="progress-bar" class="progress-bar">0%</div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </section>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-sliders" aria-hidden="true"></i>&nbsp;&nbsp;Gestion d'impression </h3>
+                                        </div>
+
+                                        <section class="section">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Couche</td>
+                                                        <td id="slice-number">0 / {{ slices }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Temps d'exposition</td>
+                                                        <td>
+                                                            <input value="1000" name="" id="exposure-time" step="100" required="" type="number" style="width: 70px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Temps de pause</td>
+                                                        <td>
+                                                            <input value="5000" name="" id="black-time" step="100" required="" type="number" style="width: 70px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Durée d'impression</td>
+                                                        <td id="print-delay">0 heures
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Activer l'obturateur</td>
+                                                        <td><label>
+                                                <input class="checkbox" type="checkbox" state="checked">
+                                                <span></span>
+			                                </label></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                             <div class="print-buttons" style="text-align: center;">
+                                                <button type="button" id="btn-print-restart" class="btn btn-success btn-lg btn-print-restart hidden" style="width: 49%">
+                                                    <i class="fa fa-step-forward" aria-hidden="true"></i> Reprendre</button>
+                                                <button type="button" id="btn-print-break" class="btn btn-warning btn-lg btn-print-break hidden" style="width: 49%">
+                                                    <i class="fa fa-pause" aria-hidden="true"></i> Pause</button>
+                                                <button type="button" id="btn-print-start" class="btn btn-success btn-lg btn-print-start" style="width: 49%" {{ slice_process }}>
+                                                    <i class="fa fa-play" aria-hidden="true"></i> Démarrer</button>
+                                                &nbsp;
+                                                <a href="#" data-toggle="modal" data-target="#confirm-modal">
+                                                    <button type="button" id="btn-print-stop" class="btn btn-danger btn-lg btn-print-stop" style="width: 40%;" data-target="#confirm-modal" disabled>
+                                                        <i class="fa fa-stop" aria-hidden="true"></i> Arrêter</button>
+                                                </a>
+
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="dlp-block" class="col-md-8">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;Vidéoprojecteur DLP </h3>
+                                        </div>
+                                        <div class="fullscreen-dlp">
+                                            <a id="btn-normal-size" class="btn btn-primary btn-sm rounded btn-normal-size hidden"><i class="fa fa-compress" aria-hidden="true"></i></a>
+                                            <a id="btn-fullscreen" class="btn btn-primary btn-sm rounded btn-fullscreen"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/black.png') }}" style="width: 100%;" />
+
+                                                <div class="progress">
+                                                  <div id="print-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                                </div>
+
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </article>
+
+                    <!-- /.modal -->
+                <div class="modal fade" id="confirm-modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+    				</button>
+                                <h4 class="modal-title"><i class="fa fa-warning"></i> Attention</h4> </div>
+                            <div class="modal-body">
+                                <p>Êtes-vous sûr de vouloir arrêter l'impression ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button onclick="clearTimeout(setWaitDelay)" type="button" class="btn btn-primary btn-print-stop-yes" data-dismiss="modal">Oui</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+{% endblock %}

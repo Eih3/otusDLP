@@ -1,0 +1,373 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+                <article class="content dashboard-page">
+                    <section class="section">
+                        <div class="row sameheight-container">
+                            <div class="col-xl-8">
+                                <div class="card sameheight-item stats" data-exclude="xs">
+                                    <div class="card-block">
+                                        <div class="title-block">
+                                            <h4 class="title"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;Informations sur l'imprimante 3D</h4>
+                                            <p class="title-description"> Nom du modèle : <a>otusDLP-172455-a32x</a> </p>
+                                        </div>
+                                        <div class="row row-sm stats-container">
+                                            <div class="col-xs-12 col-sm-6 stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-power-off"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> 34 heures </div>
+                                                    <div class="name"> Depuis la mise sous tension </div>
+                                                </div> <progress class="progress stat-progress" value="0" max="100">
+                                <div class="progress">
+                                    <span class="progress-bar" style="width: 75%;"></span>
+                                </div>
+                            </progress> </div>
+                                            <div class="col-xs-12 col-sm-6 stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-signal"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> WiFi ON </div>
+                                                    <div class="name"> SSID : <italic>otusDLP</italic> </div>
+                                                </div> <progress class="progress stat-progress" value="0" max="100">
+                                <div class="progress">
+                                    <span class="progress-bar" style="width: 25%;"></span>
+                                </div>
+                            </progress> </div>
+                                            <div class="col-xs-12 col-sm-6  stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-tint"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> 1845 mL </div>
+                                                    <div class="name"> Volume de résine consommé </div>
+                                                </div>
+                                                <progress class="progress stat-progress" value="0" max="100"></progress> </div>
+
+
+
+                                                                                     <div class="col-xs-12 col-sm-6 stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-hourglass-end"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> 4h 27min </div>
+                                                    <div class="name"> Temps moyen d'une impression </div>
+                                                </div> <progress class="progress stat-progress" value="0" max="100">
+                                <div class="progress">
+                                    <span class="progress-bar" style="width: 15%;"></span>
+                                </div>
+                            </progress> </div>
+                                            <div class="col-xs-12 col-sm-6  stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-thermometer-three-quarters"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> 27 °C </div>
+                                                    <div class="name"> Température du système </div>
+                                                </div> <progress class="progress stat-progress" value="0" max="100">
+                                <div class="progress">
+                                    <span class="progress-bar" style="width: 49%;"></span>
+                                </div>
+                            </progress> </div>
+                                    <div class="col-xs-12 col-sm-6  stat-col">
+                                                <div class="stat-icon"> <i class="fa fa-play"></i> </div>
+                                                <div class="stat">
+                                                    <div class="value"> 24  </div>
+                                                    <div class="name"> Nombre total d'impressions </div>
+                                                </div> <progress class="progress stat-progress" value="0" max="100">
+                                <div class="progress">
+                                    <span class="progress-bar" style="width: 34%;"></span>
+                                </div>
+                            </progress> </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           <div class="col-xl-4">
+                                <div class="card sameheight-item sales-breakdown" data-exclude="xs,sm,lg">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <h3 class="title"><i class="fa fa-tint"></i>&nbsp;&nbsp;Utilisation des résines (en mL)</h3>
+                                        <p class="title-description"> Prix moyen au litre : <strong>62 €</strong></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="dashboard-sales-breakdown-chart" id="dashboard-sales-breakdown-chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <section class="section">
+                        <div class="row sameheight-container">
+                            <div class="col-md-12">
+                                <div class="card sameheight-item items" data-exclude="xs,sm,lg">
+                                    <div class="card-header bordered">
+                                        <div class="header-block">
+                                            <h3 class="title"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Fichiers populaires dans la communauté</h3>
+                                            <a href="/slacer" class="btn btn-primary btn-sm rounded"> Nouvelle impression</a>
+                                        </div>
+                                        <div class="header-block pull-right">
+                                            <label class="search">
+                                                <input class="search-input" placeholder="rechercher...">
+                                                <i class="fa fa-search search-icon"></i>
+                                            </label>
+                                            &nbsp;&nbsp;
+                                            <div class="pagination">
+                                                <a class="btn btn-primary btn-sm rounded"> <i class="fa fa-angle-up"></i> </a>
+                                                <a class="btn btn-primary btn-sm rounded"> <i class="fa fa-angle-down"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="item-list striped">
+                                        <li class="item item-list-header hidden-sm-down">
+                                            <div class="item-row">
+                                                <div class="item-col item-col-header fixed item-col-img xs"></div>
+                                                <div class="item-col item-col-header item-col-title">
+                                                    <div><span>Nom du fichier</span></div>
+                                                </div>
+                                                <div class="item-col item-col-header item-col-sales">
+                                                    <div><span>Nb de couches</span></div>
+                                                </div>
+                                                <div class="item-col item-col-header item-col-stats">
+                                                    <div><span>Temps d'impression</span></div>
+                                                </div>
+                                                <div class="item-col item-col-header item-col-date">
+                                                    <div><span>Téléchargements</span></div>
+                                                </div>
+                                                <div class="item-col item-col-header fixed"><span></span></div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:526926" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/0.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:526926" target="_blank">
+                                                            <h4 class="item-title no-wrap">Terminator T-800 Hollow with drain holes for SLA printers</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 64 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 3h 45min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 241 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:694163" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/1.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:694163" target="_blank">
+                                                            <h4 class="item-title no-wrap">SLA Metallic Microlattice test</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 192 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 6h 37min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 193 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:2023855" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/2.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:2023855" target="_blank">
+                                                            <h4 class="item-title no-wrap">weird funny batman lattice bust for dissolvable dual extrusion or sla</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 82 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 5h 28min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 164 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:2063952" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/3.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:442571" target="_blank">
+                                                            <h4 class="item-title no-wrap">Capillar print test object</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 12 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 34min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 155 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:992653" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/4.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:992653" target="_blank">
+                                                            <h4 class="item-title no-wrap">Sasuke Chibi</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 285 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 11h 21min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 136 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:2034736" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/5.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:2034736" target="_blank">
+                                                            <h4 class="item-title no-wrap">Unique Vintage Style Ring- Jewelry 3D Model</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 67 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                    <div> 2h 39min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 110 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="item-row">
+                                                <div class="item-col fixed item-col-img xs">
+                                                    <a href="http://www.thingiverse.com/thing:23730" target="_blank">
+                                                        <div class="item-img xs rounded" style="background-image: url('{{ url_for('static', filename='img/6.jpg') }}')"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="item-col item-col-title no-overflow">
+                                                    <div>
+                                                        <a href="http://www.thingiverse.com/thing:2034736" target="_blank">
+                                                            <h4 class="item-title no-wrap">Sapphos Head half size tilted back 5degrees slic3r friendly</h4> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="item-col item-col-sales">
+                                                    <div class="item-heading">Couches</div>
+                                                    <div> 278 </div>
+                                                </div>
+                                                <div class="item-col item-col-stats">
+                                                    <div class="item-heading">Temps d'impression</div>
+                                                     <div> 3h 22min </div>
+                                                </div>
+                                                <div class="item-col item-col-date">
+                                                    <div class="item-heading">Téléchargements</div>
+                                                    <div> 91 </div>
+                                                </div>
+                                                <div class="item-col fixed item-col xs">
+                                                    <a href="/print">
+                                                        <button type="button" class="btn btn-success-outline"> Imprimer </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <section class="section map-tasks">
+                        <div class="row sameheight-container">
+
+                        </div>
+                    </section>
+                </article>
+{% endblock %}

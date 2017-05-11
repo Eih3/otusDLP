@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+    <head>
+      <title>Projector View</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/projector.css') }}">
+
+    </head>
+
+    <body>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+    <script>
+            var socket = io.connect( 'http://' + document.domain + ':' + location.port );
+
+            socket.on('projector-view', function(msg) {
+                var setWaitDelay = setTimeout(waitDelay, msg.delay);
+
+                var i = new Image();
+
+                i.onload = function() {
+                    document.body.style.backgroundSize = i.width > window.innerWidth || i.height > window.innerHeight ? 'contain' : 'auto';
+                    document.body.style.backgroundImage = 'url(' + msg.url + ')';
+                };
+
+                i.src = msg.url;
+
+                function waitDelay(){
+
+                    if (msg.action == 'black') {
+                        $.post("/print/process");
+                    } else {
+                        $.post("/print/process/black");
+                    }
+                };
+            });
+
+            socket.on('calibration-view', function(msg) {
+                var i = new Image();
+                i.onload = function() {
+                    document.body.style.backgroundSize = i.width > window.innerWidth || i.height > window.innerHeight ? 'contain' : 'auto';
+                    document.body.style.backgroundImage = 'url(' + msg + ')';
+                };
+                i.src = msg;
+            });
+
+            socket.on('print-start', function(){
+                $.post("/print/process");
+            });
+
+            socket.on('print-stop', function() {
+                printFinish();
+            });
+
+        </script>
+    </body>
+
+</html>
+

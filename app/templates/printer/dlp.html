@@ -1,0 +1,143 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+                <article class="content buttons-page">
+                    <div class="title-block">
+                        <h3 class="title"> Calibration du Vidéoprojecteur DLP </h3>
+                        <p class="title-description"> Cliquez sur une feuille de calibration pour l'afficher </p>
+                    </div>
+
+                    <section class="section">
+                        <div class="row">
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;1920 x 1080 White </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/calibration-1920x1080.png') }}" style="width: 100%;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-hd-white" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;1920 x 1080 Red </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/calibration-red-1920x1080.png') }}" style="width: 100%;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-hd-red" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;1920 x 1080 Full Black </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/black.png') }}" style="width: 100%;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-black" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;240 x 135 White </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/calibration.png') }}" style="width: 100%;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-small-white" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;240 x 135 Red </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/calibration-red.png') }}" style="width: 100%;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-small-red" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="dlp-block" class="col-md-4">
+                                <div class="card" >
+                                    <div class="card-block" >
+                                        <div class="card-title-block">
+                                            <h3 class="title"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;1920 x 1080 Full White </h3>
+                                        </div>
+                                        <section class="section">
+                                                <img id="projector-view" src="{{ url_for('static', filename='img/calibration/white.png') }}" style="width: 100%; border: 1px solid #000;" />
+                                                <div id="dlp-calibration">
+                                                    <button class="btn btn-success btn-sm btn-show-full-white" style="margin-right: 20px;" type="button"> Afficher </button>
+                                                    <button class="btn btn-warning btn-sm btn-show-black" type="button"> Retirer </button>
+                                                </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </article>
+
+                    <!-- /.modal -->
+                <div class="modal fade" id="confirm-modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+    				</button>
+                                <h4 class="modal-title"><i class="fa fa-warning"></i> Attention</h4> </div>
+                            <div class="modal-body">
+                                <p>Êtes-vous sûr de vouloir arrêter l'impression ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button onclick="clearTimeout(printing)" type="button" class="btn btn-primary btn-print-stop-yes" data-dismiss="modal">Oui</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+{% endblock %}

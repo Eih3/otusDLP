@@ -1,0 +1,299 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <title>{{ title }} | otusDLP</title>
+
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="description" />
+		<meta name="keywords" content="otusDLP, printer, 3D, resine, raspberry pi" />
+		<meta name="apple-mobile-web-app-title" content="otusDLP" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/app-orange.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+
+    </head>
+
+    <body>
+        <div class="main-wrapper">
+            <div class="app" id="app">
+
+                <header class="header">
+                    <div class="header-block header-block-collapse hidden-lg-up"> <button class="collapse-btn" id="sidebar-collapse-btn">
+    			<i class="fa fa-bars"></i>
+    		</button> </div>
+                    <div class="header-block header-block-search hidden-sm-down">
+                        <form role="search">
+                            <div class="input-container"> <i class="fa fa-search"></i> <input type="search" placeholder="Rechercher">
+                                <div class="underline"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="header-block header-block-buttons">
+                        <a target="_blank" href="https://github.com/Eih3/otusDLP" class="btn btn-oval btn-sm rounded-s header-btn"> <i class="fa fa-github-alt"></i> Voir sur GitHub </a>
+                        <a href="#" class="btn btn-oval btn-sm rounded-s header-btn"> <i class="fa fa-cloud-download"></i> Téléchargement .zip </a>
+                    </div>
+                    <div class="header-block header-block-nav">
+                        <ul class="nav-profile">
+                            <li class="notifications new">
+                                <a href="" data-toggle="dropdown"> <i class="fa fa-bell-o"></i> <sup>
+    			      <span class="counter">2</span>
+    			    </sup> </a>
+                                <div class="dropdown-menu notifications-dropdown-menu">
+                                    <ul class="notifications-container">
+                                        <li>
+                                            <a href="" class="notification-item">
+                                                <div class="img-col">
+                                                    <div class="img" style="background-image: url('{{ url_for('static', filename='img/5721523.jpg') }}')"></div>
+                                                </div>
+                                                <div class="body-col">
+                                                    <p> <span class="accent">Michel</span> a lancé une impression : <span class="accent">pika.stl</span>. </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="notification-item">
+                                                <div class="img-col">
+                                                    <div class="img" style="background-image: url('{{ url_for('static', filename='img/5721523.jpg') }}')"></div>
+                                                </div>
+                                                <div class="body-col">
+                                                    <p> <span class="accent">Michel</span> a recalibré le plateau. </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <footer>
+                                        <ul>
+                                            <li> <a href="">
+    			            Tout voir
+    			          </a> </li>
+                                        </ul>
+                                    </footer>
+                                </div>
+                            </li>
+                            <li class="profile dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <div class="img" style="background-image: url('{{ url_for('static', filename='img/5721523.jpg') }}')"> </div> <span class="name">
+    			      Michel ESC
+    			    </span> </a>
+                                <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-user icon"></i> Mon compte </a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-bell icon"></i> Notifications </a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-gear icon"></i> Paramètres </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="login.html"> <i class="fa fa-power-off icon"></i> Se déconnecter </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </header>
+
+                <aside class="sidebar">
+                    <div class="sidebar-container">
+                        <div class="sidebar-header">
+                            <div class="brand">
+                                <div class="logo"> <img src="{{ url_for('static', filename='img/owl.png') }}" class="logo-img" /></div> otusDLP Printer </div>
+                        </div>
+                        <nav class="menu">
+                            <ul class="nav metismenu" id="sidebar-menu">
+
+                                <li {% if title == 'Dashboard' %}class="active"{% endif %}>
+                                    <a href="/"> <i class="fa fa-home"></i> Dashboard </a>
+                                </li>
+
+                                <li {% if title == 'SLAcer.js' %}class="active"{% endif %}>
+                                    <a href="{{ url_for('slacer') }}"> <i class="fa fa-bars"></i> SLAcer.js </a>
+                                </li>
+
+                                <li {% if title == 'Impression' %}class="active"{% endif %}>
+                                    <a href="{{ url_for('printing') }}"> <i class="fa fa-tint"></i> Impression 3D </a>
+                                </li>
+
+                                <li {% if menu == 'config' %}class="active"{% endif %}>
+                                    <a href=""> <i class="fa fa-cog"></i> Configuration <i class="fa arrow"></i></a>
+                                    <ul>
+                                        <li {% if title == 'Calibration DLP' %}class="active"{% endif %}><a href="{{ url_for('config_dlp') }}"><i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;&nbsp;Calibration DLP </a></li>
+                                        <li {% if title == 'Plateau' %}class="active"{% endif %}><a href="{{ url_for('config_plate') }}"> <i class="fa fa-sort"></i>&nbsp;&nbsp;Hauteur Plateau </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <footer class="sidebar-footer">
+                        <ul class="nav metismenu" id="customize-menu">
+                            <li>
+                                <ul>
+                                    <li class="customize">
+                                        <div class="customize-item">
+                                            <div class="row customize-header">
+                                                <div class="col-xs-4"> </div>
+                                                <div class="col-xs-4"> <label class="title">fixed</label> </div>
+                                                <div class="col-xs-4"> <label class="title">static</label> </div>
+                                            </div>
+                                            <div class="row hidden-md-down">
+                                                <div class="col-xs-4"> <label class="title">Sidebar:</label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="sidebarPosition" value="sidebar-fixed" >
+    				                        <span></span>
+    				                    </label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="sidebarPosition" value="">
+    				                        <span></span>
+    				                    </label> </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4"> <label class="title">Header:</label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="headerPosition" value="header-fixed">
+    				                        <span></span>
+    				                    </label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="headerPosition" value="">
+    				                        <span></span>
+    				                    </label> </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4"> <label class="title">Footer:</label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="footerPosition" value="footer-fixed">
+    				                        <span></span>
+    				                    </label> </div>
+                                                <div class="col-xs-4"> <label>
+    				                        <input class="radio" type="radio" name="footerPosition" value="">
+    				                        <span></span>
+    				                    </label> </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <a href=""> <i class="fa fa-th-large"></i> Changer le style </a>
+                            </li>
+                        </ul>
+                    </footer>
+                </aside>
+                <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+                {% block body %}{% endblock %}
+
+                <footer class="footer">
+                    <div class="footer-block buttons">
+                     <!--   <a href="/printing">
+                            <button id="info-print-break" type="button" class="btn btn-pill-right btn-warning"><i class="fa fa-pause" aria-hidden="true"></i> Impression en pause </button>
+                            <button id="info-print-start" type="button" class="btn btn-pill-right btn-success"><i class="fa fa-play" aria-hidden="true"></i> Impression en cour</button>
+                            <button id="info-print-stop" type="button" class="btn btn-pill-right btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Impression terminée</button>
+                        </a>-->
+                    </div>
+                    <div class="footer-block author">
+                        <ul>
+                            <li> <> with ♥ by <strong>Eih3</strong> </li>
+                        </ul>
+                    </div>
+                </footer>
+
+                <div class="modal fade" id="modal-media">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+    					<span class="sr-only">Close</span>
+    				</button>
+                                <h4 class="modal-title">Media Library</h4> </div>
+                            <div class="modal-body modal-tab-container">
+                                <ul class="nav nav-tabs modal-tabs" role="tablist">
+                                    <li class="nav-item"> <a class="nav-link" href="#gallery" data-toggle="tab" role="tab">Gallery</a> </li>
+                                    <li class="nav-item"> <a class="nav-link active" href="#upload" data-toggle="tab" role="tab">Upload</a> </li>
+                                </ul>
+                                <div class="tab-content modal-tab-content">
+                                    <div class="tab-pane fade" id="gallery" role="tabpanel">
+                                        <div class="images-container">
+                                            <div class="row"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade active in" id="upload" role="tabpanel">
+                                        <div class="upload-container">
+                                            <div id="dropzone">
+                                                <form action="/" method="POST" enctype="multipart/form-data" class="dropzone needsclick dz-clickable" id="demo-upload">
+                                                    <div class="dz-message-block">
+                                                        <div class="dz-message needsclick"> Drop files here or click to upload. </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Insert Selected</button> </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+            </div>
+        </div>
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/vendor.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uploadr.js') }}"></script>
+
+        {% if title == 'Impression' %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+        <script>
+            var socket = io.connect( 'http://' + document.domain + ':' + location.port );
+            var startPrint = false;
+
+            socket.on('projector-view', function(msg) {
+                startPrint = true;
+
+                var i = new Image();
+                var progressValue = (100/msg.totalSlice)*msg.slice
+
+                i.onload = function() {
+                    document.getElementById("projector-view").src = msg.url;
+                };
+
+                 i.src = msg.url;
+
+                document.getElementById("slice-number").innerHTML = msg.slice + ' / ' + msg.totalSlice;
+
+                document.getElementById("print-progress").style.width = progressValue + "%";
+
+                var millis = msg.printDelay;
+
+                msToTime(millis);
+
+            });
+
+            socket.on('print-stop', function() {
+                document.getElementById("print-delay").innerHTML = "0";
+                printFinish();
+            });
+
+            function msToTime(duration) {
+                 var seconds = parseInt((duration/1000)%60)
+                , minutes = parseInt((duration/(1000*60))%60)
+                , hours = parseInt((duration/(1000*60*60))%24);
+
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                document.getElementById("print-delay").innerHTML = hours + ":" + minutes + ":" + seconds;
+            }
+
+        </script>
+        {% endif %}
+    </body>
+</html>
